@@ -1,0 +1,22 @@
+language: swift
+os: osx
+osx_image: xcode15.4   # pilih versi Xcode yang sesuai
+
+env:
+  global:
+    - WORKSPACE=MyGameCatalog.xcodeproj
+    - SCHEME=MyGameCatalog
+    - DESTINATION="platform=iOS Simulator,name=iPhone 14,OS=17.5"
+
+before_install:
+  - gem install xcpretty --no-document
+
+script:
+  - set -o pipefail
+  - xcodebuild clean build \
+      -project "$WORKSPACE" \
+      -scheme "$SCHEME" \
+      -destination "$DESTINATION" \
+      CODE_SIGN_IDENTITY="" \
+      CODE_SIGNING_REQUIRED=NO | xcpretty
+
