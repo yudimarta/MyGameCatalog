@@ -1,6 +1,6 @@
 language: swift
 os: osx
-osx_image: xcode15.4   # pilih versi Xcode yang sesuai
+osx_image: xcode15.4 # pilih versi Xcode yang sesuai
 
 env:
   global:
@@ -14,9 +14,8 @@ before_install:
 script:
   - set -o pipefail
   - xcodebuild clean build \
-      -project "$WORKSPACE" \
-      -scheme "$SCHEME" \
-      -destination "$DESTINATION" \
-      CODE_SIGN_IDENTITY="" \
-      CODE_SIGNING_REQUIRED=NO | xcpretty
-
+    -project "$WORKSPACE" \
+    -scheme "$SCHEME" \
+    -destination "$DESTINATION" \
+    CODE_SIGN_IDENTITY="" \
+    CODE_SIGNING_REQUIRED=NO | xcpretty
